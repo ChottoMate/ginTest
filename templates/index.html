@@ -4,6 +4,26 @@
     <title>Gin Test</title>
 </head>
 <body>
-<h1>Hello World!!!</h1>
+<h2>add</h2>
+<form method="post" action="/new">
+    <p>content<input type="text" name="text" size="30" placeholder="input text"></p>
+    <p>status
+        <select name="status">
+            <option value="undo">undo</option>
+            <option value="doing">doing</option>
+            <option value="done">done</option>
+        </select>
+    </p>
+    <p><input type="submit" value="Send"></p>
+</form>
+
+<ul>
+    {{ range .todos }}
+        <li>content: {{ .Text }}, stauts: {{ .Status }}
+            <label><a href="/detail/{{.ID}}">update</a> </label>
+            <label><a href="/delete_check/{{.ID}}">delete</a> </label>
+        </li>
+    {{ end }}
+</ul>
 </body>
 </html>
