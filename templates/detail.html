@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Gin Test</title>
+</head>
+<body>
+<h2>detail</h2>
+<p>{{.user.ID}}</p>
+<p>{{.user.Name}}</p>
+<p>{{.user.Age}}</p>
+
+<form method="post" action="/update/{{.todo.ID}}">
+    <p>content
+        <input type="text" name="text" size="30" value="{{.todo.Text}}">
+    </p>
+    <p>status
+        <select name="status">
+            {{if eq .todo.Status "undo"}}
+                <option value="undo" selected>undo</option>
+                <option value="doing">doing</option>
+                <option value="done">done</option>
+            {{else if eq .todo.Status "doing"}}
+                <option value="undo">undo</option>
+                <option value="doing" selected>doing</option>
+                <option value="done">done</option>
+            {{else}}
+                <option value="undo">undo</option>
+                <option value="doing">doing</option>
+                <option value="done" selected>done</option>
+            {{end}}
+        </select>
+    </p>
+    <p><input type="submit" value="Send"></p>
+</form>
+</body>
+</html>
